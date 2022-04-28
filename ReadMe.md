@@ -21,6 +21,12 @@ To get started you must make a reference to the library from your project by
 adding this repository's github packages nuget feed as a source to your solution 
 or cloning the repo and compiling your own version.
 
+![Nuget Feed Source Settings](i502Club.Ccrs/images/screenshot_nuget_settings.png)
+
+Once you've added the nuget source you can install the package using the 
+nuget command found on the package version you're installing(usually latest). 
+
+
 For most applications it will be the case that you will also want a NuGet 
 package reference to CsvHelper.  CCRS is a csv file based system.
 
