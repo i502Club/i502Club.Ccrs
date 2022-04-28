@@ -37,8 +37,7 @@ namespace i502Club.Ccrs.Tests
                 {
                     Name = "Product" + i,
                     InventoryCategory = Enums.InventoryCategory.PropagationMaterial,
-                    //InventoryType = Enum.GetName(typeof(Enums.InventoryType),(int)Enums.InventoryType.Seed),
-                    InventoryType = "Seed",
+                    InventoryType = Enum.GetName(typeof(Enums.InventoryType),(int)Enums.InventoryType.Seed),
                     CreatedDate = DateTime.Parse("04/20/2022"),
                     CreatedBy = user.FirstName + " " + user.LastName
                 };
