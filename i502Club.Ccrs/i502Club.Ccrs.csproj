@@ -33,8 +33,6 @@
 		<Pack>True</Pack>
 		<PackagePath>\</PackagePath>
 	</Content>
-	  <None Include="images\logo.png" Pack="true" PackagePath="images"/>
-	  <None Include="images\ccrs_logo.png" Pack="true" PackagePath="images"/>
   </ItemGroup>
 
 </Project>
