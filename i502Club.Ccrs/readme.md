@@ -1,5 +1,5 @@
 # i502Club.Ccrs
-This is a .net project to support WA's CCRS cannabis reporting system for use 
+This is a .net class libray project to support WA's CCRS cannabis reporting system for use 
 within other .net applications.  The project simplifies creating the boilerplate 
 code for common models, interfaces and enums which developers are likely to 
 be working with when sending data to the Cannabis Central Reporting System(CCRS).
@@ -11,7 +11,6 @@ usages for it as well.
 Test data example screenshot:
 
 ![CCRS File](images/screenshot_ccrs.png)
-
 This project is NON OFFICIAL and has not yet been validated for use in a production 
 environment.  It is currently being developed and issues are expected to arise requiring 
 fixes.
@@ -20,6 +19,9 @@ fixes.
 To get started you must make a reference to the library from your project by 
 adding this repository's github packages nuget feed as a source to your solution 
 or cloning the repo and compiling your own version.
+
+To access the package add https://nuget.pkg.github.com/i502Club/index.json as 
+a NuGet package source to Visual Studio or any other development tool.
 
 ![Nuget Feed Source Settings](images/screenshot_nuget_settings.png)
 
