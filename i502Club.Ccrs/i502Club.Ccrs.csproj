@@ -6,7 +6,7 @@
 	<Description>DotNet library for WA CCRS models, interfaces and enums.</Description>
     <Copyright>i502 Club</Copyright>
     <PackageProjectUrl>https://github.com/i502Club/ccrs</PackageProjectUrl>
-    <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
 	<!--<PackageLicenseFile>License.txt</PackageLicenseFile>-->
     <RepositoryUrl>https://github.com/i502Club/ccrs</RepositoryUrl>
     <PackageTags>cannabis;ccrs;i502</PackageTags>
@@ -28,7 +28,7 @@
 		<Pack>True</Pack>
 		<PackagePath>\</PackagePath>
 	</Content>
-	<Content Include="Readme.md">
+	<Content Include="readme.md">
 		<Pack>True</Pack>
 		<PackagePath>\</PackagePath>
 	</Content>
