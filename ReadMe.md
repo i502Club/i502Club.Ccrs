@@ -17,7 +17,9 @@ environment.  It is currently being developed and issues are expected to arise r
 fixes.
 
 ## Getting Started
-To get started you must make a reference to the library from your project.
+To get started you must make a reference to the library from your project by 
+adding this repository's github packages nuget feed as a source to your solution 
+or cloning the repo and compiling your own version.
 
 For most applications it will be the case that you will also want a NuGet 
 package reference to CsvHelper.  CCRS is a csv file based system.
@@ -34,12 +36,19 @@ from a CCRS file using CsvHelper. It also includes some helper funcs and
 custom converters can be useful for jump starting an app.
 
 ### About the Install
-You are free to download the compiled library or clone the repository and compile it 
-as you prefer.  A nuget package is also available.
+You can use the nuget package feed to make upgrading easier but it's not 
+required.  You may also clone the repo or download and manually extract the library 
+from the package.
 
 ### Development
-This project may see breaking changes.  Please implement accordingly.
-
+This project will likely see breaking changes.  Please implement accordingly.
+We expect to see some CCRS changes around duplicate inventory types 
+in categories.  The project contains an experimental superset Enum for 
+inventory types which attempts to address this but for now it 
+is purely experimental and real world application use should be avoided.  
+This project contains seperate Enums representing the category specific 
+inventory types available which avoids duplicate Enum Key name collisions 
+that would otherwise occur if using a single Enum.
 
 ---
 
