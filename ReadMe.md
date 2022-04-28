@@ -42,12 +42,14 @@ from the package.
 
 ### Development
 This project will likely see breaking changes.  Please implement accordingly.
+
 We expect to see some CCRS changes around duplicate inventory types 
 in categories.  The project contains an experimental superset Enum for 
 inventory types which attempts to address this but for now it 
-is purely experimental and real world application use should be avoided.  
-This project contains seperate Enums representing the category specific 
-inventory types available which avoids duplicate Enum Key name collisions 
+is purely experimental and real world application use should be avoided. 
+
+There are seperate Enums representing the category specific inventory 
+types available which avoids duplicate Enum Key name collisions 
 that would otherwise occur if using a single Enum.
 
 ---
