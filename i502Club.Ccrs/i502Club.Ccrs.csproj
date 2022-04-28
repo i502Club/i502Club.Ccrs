@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1;net45;net472</TargetFrameworks>
     <PackageReleaseNotes>ReleaseNotes.txt</PackageReleaseNotes>
 	 
-	<Description>Net Standard library for WA CCRS models, interfaces and enums.</Description>
+	<Description>DotNet library for WA CCRS models, interfaces and enums.</Description>
     <Copyright>i502 Club</Copyright>
     <PackageProjectUrl>https://github.com/i502Club/ccrs</PackageProjectUrl>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
@@ -21,15 +21,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="ReadMe.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </Content>
 	<Content Include="License.txt">
 		<Pack>True</Pack>
 		<PackagePath>\</PackagePath>
 	</Content>
 	<Content Include="ReleaseNotes.txt">
+		<Pack>True</Pack>
+		<PackagePath>\</PackagePath>
+	</Content>
+	<Content Include="Readme.md">
 		<Pack>True</Pack>
 		<PackagePath>\</PackagePath>
 	</Content>
