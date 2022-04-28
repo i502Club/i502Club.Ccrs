@@ -25,7 +25,9 @@ namespace i502Club.Ccrs.Converters
                 return string.Empty;
             }
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return value.ToString().ToUpper();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
     }
 }

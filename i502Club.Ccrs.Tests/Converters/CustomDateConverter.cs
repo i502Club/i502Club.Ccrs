@@ -34,7 +34,9 @@ namespace i502Club.Ccrs.Converters
                 return formattable.ToString(format, memberMapData.TypeConverterOptions.CultureInfo);
             }
 
+#pragma warning disable CS8603 // Possible null reference return.
             return value.ToString();
+#pragma warning restore CS8603 // Possible null reference return.
         }
     }
 }
