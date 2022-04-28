@@ -1,0 +1,53 @@
+name: Build Package
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore i502Club.Ccrs.csproj
+      working-directory: i502Club.Ccrs
+
+    - name: Build
+      run: dotnet build i502Club.Ccrs.csproj --no-restore --configuration Release
+      working-directory: i502Club.Ccrs
+
+    - name: Test
+      run: dotnet test --logger "console;verbosity=detailed" --collect:"XPlat Code Coverage"
+      working-directory: i502Club.Ccrs.Tests
+
+    - name: Install report generator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+    - name: Generate coverage report
+      run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:./i502Club.Ccrs.Tests
+    - uses: actions/upload-artifact@v3
+      with:
+        name: coverage
+        path: i502Club.Ccrs.Tests
+
+    - name: Create Nuget Feed Source
+      run: dotnet nuget add source --username i502Club --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/i502Club/index.json"
+      working-directory: i502Club.Ccrs
+
+    - name: Pack
+      run: dotnet pack i502Club.Ccrs.csproj
+      working-directory: i502Club.Ccrs
+
+    - name: Push Nuget
+      run: dotnet nuget push "bin/**.nupkg" --skip-duplicate --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/i502Club/index.json"
+      working-directory: i502Club.Ccrs

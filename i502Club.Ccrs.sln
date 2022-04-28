@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i502Club.Ccrs", "i502Club.Ccrs\i502Club.Ccrs.csproj", "{B1B36394-6A9B-45F5-AEDC-8D1E6337C03E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i502Club.Ccrs.Tests", "i502Club.Ccrs.Tests\i502Club.Ccrs.Tests.csproj", "{C3728409-283B-4496-84E2-355BE5FC8BB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B36394-6A9B-45F5-AEDC-8D1E6337C03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B36394-6A9B-45F5-AEDC-8D1E6337C03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B36394-6A9B-45F5-AEDC-8D1E6337C03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B36394-6A9B-45F5-AEDC-8D1E6337C03E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3728409-283B-4496-84E2-355BE5FC8BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3728409-283B-4496-84E2-355BE5FC8BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3728409-283B-4496-84E2-355BE5FC8BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3728409-283B-4496-84E2-355BE5FC8BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B8010A8-B1DB-4576-A604-18844C904C9E}
+	EndGlobalSection
+EndGlobal
