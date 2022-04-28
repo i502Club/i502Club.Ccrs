@@ -64,7 +64,7 @@ testing proceeds remaining issues that require attention will get addressed.
 This project was built using [documentation](https://lcb.wa.gov/ccrs/resources) provided for the general community by WSLCB.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
+This project is licensed under the MIT License - see the [LICENSE.txt](i502Club.Ccrs/License.txt) file for details
 
 ## Acknowledgments
 * All the contributors to i502
