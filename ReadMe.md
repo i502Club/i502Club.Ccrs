@@ -8,6 +8,10 @@ It is designed/organized so it can be used with the well known [CsvHelper](https
 efficient generation of the files expected by CCRS in WA State. You may find other creative 
 usages for it as well.
 
+Example Screenshot:
+
+![CCRS File](i502Club.Ccrs/images/screenshot_ccrs.png)
+
 This project is NON OFFICIAL and has not yet been validated for use in a production 
 environment.  It is currently being developed and issues are expected to arise requiring 
 fixes.
@@ -24,14 +28,14 @@ should generate properly by CsvHelper in terms of column placement.
 
 There is great documentation for [CsvHelper](https://joshclose.github.io/CsvHelper/) if you need a quick primer on working with it.
 
-The repository includes a test project that which has tests demonstrating the generation 
-of an areas CCRS file.  The tests show the steps one can use to create and then read 
+This repository includes a test project which has tests demonstrating the generation 
+of a few CCRS files.  The tests show the steps one can use to create and then read 
 from a CCRS file using CsvHelper. It also includes some helper funcs and 
 custom converters can be useful for jump starting an app.
 
 ### About the Install
 You are free to download the compiled library or clone the repository and compile it 
-if you prefer.  There is a compiled net standard 2 version available for download. 
+as you prefer.  A nuget package is also available.
 
 ### Development
 This project may see breaking changes.  Please implement accordingly.
