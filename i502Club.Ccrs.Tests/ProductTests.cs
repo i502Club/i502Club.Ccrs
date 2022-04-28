@@ -1,5 +1,6 @@
 using CsvHelper;
 using i502Club.Ccrs.Models;
+using i502Club.Ccrs.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
