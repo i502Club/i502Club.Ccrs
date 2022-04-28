@@ -8,7 +8,7 @@ It is designed/organized so it can be used with the well known [CsvHelper](https
 efficient generation of the files expected by CCRS in WA State. You may find other creative 
 usages for it as well.
 
-Example Screenshot:
+Test data example screenshot:
 
 ![CCRS File](i502Club.Ccrs/images/screenshot_ccrs.png)
 
