@@ -1,3 +1,5 @@
+using AutoFixture;
+using AutoFixture.AutoMoq;
 using CsvHelper;
 using i502Club.Ccrs.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,6 +14,7 @@ namespace i502Club.Ccrs.Tests
     [TestClass]
     public class StrainTests : TestBase
     {
+
         [TestMethod]
         public void CreateAndRead()
         {
@@ -28,19 +31,14 @@ namespace i502Club.Ccrs.Tests
 
             RemoveCsvFiles(path);
 
-            //create some areas
+            //create some items
             var items = new List<Strain>();
             for (int i = 0; i < 4; i++)
             {
 
-                var item = new Strain
-                {
-                    Name = "Strain" + i,
-                    Type = Enums.StrainType.Hybrid,
-
-                    CreatedDate = DateTime.Parse("04/20/2022"),
-                    CreatedBy = user.FirstName + " " + user.LastName
-                };
+                var fixture = new Fixture().Customize(new AutoMoqCustomization());
+                var item = fixture.Create<Strain>();
+                items.Add(item);
 
                 items.Add(item);
             }
@@ -59,7 +57,7 @@ namespace i502Club.Ccrs.Tests
                 csv.WriteRecords(items);
             }
 
-            //get area ccrs files
+            //get ccrs files
             var files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
             var testItems = new List<Strain>();
