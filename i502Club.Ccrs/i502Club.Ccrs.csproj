@@ -7,12 +7,10 @@
     <Copyright>i502 Club</Copyright>
     <PackageProjectUrl>https://github.com/i502Club/ccrs</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-	<!--<PackageLicenseFile>License.txt</PackageLicenseFile>-->
     <RepositoryUrl>https://github.com/i502Club/ccrs</RepositoryUrl>
     <PackageTags>cannabis;ccrs;i502</PackageTags>
     <Company>i502 Club</Company>
     <Authors>i502 Club</Authors>
-    <Owners>i502 Club</Owners>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
