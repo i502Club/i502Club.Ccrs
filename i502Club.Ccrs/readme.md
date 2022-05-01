@@ -51,10 +51,11 @@ from the package.
 ### Development
 This project will likely see breaking changes.  Please implement accordingly.
 
-We expect to see some CCRS changes around duplicate inventory types 
-in categories.  The project contains an experimental superset Enum for 
-inventory types which attempts to address this but for now it 
-is purely experimental and real world application use should be avoided. 
+There is a known issue in CCRS related to duplicate inventory type names 
+(waste and marijuana mixes) in categories.  This project contains an experimental superset 
+Enum for inventory types which attempts to address this but it is purely experimental and 
+real world application use may require refactoring once a standardized solutin has been 
+released to integrators. 
 
 There are seperate Enums representing the category specific inventory 
 types available which avoids duplicate Enum Key name collisions 
