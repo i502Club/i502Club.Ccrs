@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net45;net472</TargetFrameworks>
     <PackageReleaseNotes>ReleaseNotes.txt</PackageReleaseNotes>
-	<Description>DotNet library for WA CCRS models, interfaces and enums.</Description>
+	<PackageDescription>DotNet library for WA CCRS models, interfaces and enums.</PackageDescription>
     <Copyright>i502 Club</Copyright>
     <PackageProjectUrl>https://github.com/i502Club/ccrs</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
