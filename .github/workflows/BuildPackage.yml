@@ -56,6 +56,7 @@ jobs:
       with:
           tag_name: v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}
           release_name: i502Club.Ccrs v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}
+          body: ${{ steps.create-release-notes.outputs.release-notes }}
           draft: true
           prerelease: true
 
