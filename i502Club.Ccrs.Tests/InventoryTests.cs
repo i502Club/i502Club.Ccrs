@@ -11,13 +11,13 @@ using System.Reflection;
 namespace i502Club.Ccrs.Tests
 {
     [TestClass]
-    public class AreaTests : TestBase
+    public class InventoryTests : TestBase
     {
         [TestMethod]
         public void CreateAndRead()
         {
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var fileNamePrefix = "area_";
+            var fileNamePrefix = "inventory_";
 
             User user = GetUser();
 
@@ -29,23 +29,28 @@ namespace i502Club.Ccrs.Tests
 
             RemoveCsvFiles(path);
 
-            //create some areas
-            var areas = new List<Area>();
+            //create some inventorys
+            var inventorys = new List<Inventory>();
             for (int i = 0; i < 4; i++)
             {
 
-                var area = new Area
+                var inventory = new Inventory
                 {
-                    Name = "Area" + i,
+                    Product = "inventory name" + i,
                     LicenseNumber = _licenseNumber,
                     ExternalIdentifier = "ExternalIdentifier" + i,
-                    IsQuarantine = false,
+                    Area = "Testing Area",
+                    InitialQuantity = i + 30,
+                    QuantityOnHand = i,
+                    TotalCost = i * 25,
+                    IsMedical = false,
+                    Strain = "strain" +i,
                     Operation = "INSERT",
                     CreatedDate = DateTime.Parse("04/20/2022"),
                     CreatedBy = user.FirstName + " " + user.LastName
                 };
 
-                areas.Add(area);
+                inventorys.Add(inventory);
             }
 
             //set up csv helper config
@@ -55,33 +60,33 @@ namespace i502Club.Ccrs.Tests
             using (var writer = new StreamWriter(path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                CreateHeaderRows(user, typeof(i502Club.Ccrs.Models.Area).GetProperties().Length, areas.Count, csv);
+                CreateHeaderRows(user, typeof(i502Club.Ccrs.Models.Inventory).GetProperties().Length, inventorys.Count, csv);
 
                 InitConverters(csv);
 
-                csv.WriteRecords(areas);
+                csv.WriteRecords(inventorys);
             }
 
-            //get area ccrs files
-            var areaFiles = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
+            //get inventory ccrs files
+            var inventoryFiles = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
-            var testAreas = new List<Area>();
+            var testinventorys = new List<Inventory>();
 
-            if (areaFiles.Any())
+            if (inventoryFiles.Any())
             {
-                foreach (var f in areaFiles)
+                foreach (var f in inventoryFiles)
                 {
                     using (var reader = new StreamReader(f))
                     using (var csv = new CsvReader(reader, config))
                     {
                         SkipSummaryLines(csv);
 
-                        testAreas.AddRange(csv.GetRecords<Area>());
+                        testinventorys.AddRange(csv.GetRecords<Inventory>());
                     }
                 }
             }
 
-            Assert.AreEqual(areas.Count, testAreas.Count);
+            Assert.AreEqual(inventorys.Count, testinventorys.Count);
         }
     }
 
