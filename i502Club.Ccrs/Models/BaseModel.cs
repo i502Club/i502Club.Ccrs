@@ -1,4 +1,5 @@
-﻿using i502Club.Ccrs.Interfaces;
+﻿using i502Club.Ccrs.Enums;
+using i502Club.Ccrs.Interfaces;
 using System;
 
 namespace i502Club.Ccrs.Models
@@ -10,6 +11,6 @@ namespace i502Club.Ccrs.Models
         public DateTime CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public string Operation { get; set; }
+        public OperationType Operation { get; set; }
     }
 }
