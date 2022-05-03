@@ -33,8 +33,6 @@ jobs:
 
     - name: Generate coverage report
       run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:./i502Club.Ccrs.Tests
-    
-    - name: Upload report artifact
     - uses: actions/upload-artifact@v3
       with:
         name: coverage
@@ -44,7 +42,7 @@ jobs:
       uses: valadas/get-release-branch-version@v1.0.1
       id: branchVersion
 
-    - name: Create release notes
+    - name: Create Release Notes
       uses: johnyherangi/create-release-notes@main
       id: create-release-notes
       env:
