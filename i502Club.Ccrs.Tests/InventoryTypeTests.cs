@@ -90,7 +90,7 @@ namespace i502Club.Ccrs.Tests
 
             var item2 = InventoryType.FromValue<InventoryType>(15);
 
-            Assert.IsTrue(item.Equals(item2));
+            Assert.IsTrue(item.InventoryType.Equals(item2));
         }
     }
 }
