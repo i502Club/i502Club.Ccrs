@@ -105,8 +105,8 @@
         public static readonly InventoryType WasteEndProduct
         = new InventoryType(32, "Waste End Product");
 
-        private InventoryType() { }
-        private InventoryType(int value, string displayName) : base(value, displayName) {
+        public InventoryType() { }
+        public InventoryType(int value, string displayName) : base(value, displayName) {
             
             //Set Category prop
             if (value < 4) { this.Category = InventoryCategory.PropagationMaterial; }
