@@ -1,6 +1,7 @@
+using AutoFixture;
+using AutoFixture.AutoMoq;
 using CsvHelper;
 using i502Club.Ccrs.Models;
-using i502Club.Ccrs.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,54 +17,43 @@ namespace i502Club.Ccrs.Tests
         [TestMethod]
         public void CreateAndRead()
         {
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var fileNamePrefix = "plantdestruction_";
 
-            User user = GetUser();
-
-            if (path == null)
+            if (_path == null)
             {
-                Assert.Fail("Invalid path");
+                Assert.Fail("Invalid _path");
                 return;
             }
 
-            RemoveCsvFiles(path);
+            TestHelpers.RemoveCsvFiles(_path);
 
             //create some items
             var items = new List<PlantDestruction>();
             for (int i = 0; i < 4; i++)
             {
 
-                var item = new PlantDestruction
-                {
-                    PlantExternalIdentifier = "PlantExternalIdentifier" + i,
-                    DestructionReason = DestructionReason.Contamination,
-                    DestructionMethod = DestructionMethod.Compost,
-                    LicenseNumber = _licenseNumber,
-                    Operation = "INSERT",
-                    CreatedDate = DateTime.Parse("04/20/2022"),
-                    CreatedBy = user.FirstName + " " + user.LastName
-                };
+                var fixture = new Fixture().Customize(new AutoMoqCustomization());
+                var item = fixture.Create<PlantDestruction>();
+                items.Add(item);
 
                 items.Add(item);
             }
 
             //set up csv helper config
-            var config = GetConfig();
+            var config = TestHelpers.GetConfig();
 
             //create the CCRS csv file
-            using (var writer = new StreamWriter(path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
+            using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                CreateHeaderRows(user, typeof(i502Club.Ccrs.Models.PlantDestruction).GetProperties().Length, items.Count, csv);
-
-                InitConverters(csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(PlantDestruction).GetProperties().Length, items.Count, csv);
+                TestHelpers.InitConverters(csv);
 
                 csv.WriteRecords(items);
             }
 
             //get ccrs files
-            var files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
+            var files = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
             var testItems = new List<PlantDestruction>();
 
@@ -74,7 +64,7 @@ namespace i502Club.Ccrs.Tests
                     using (var reader = new StreamReader(f))
                     using (var csv = new CsvReader(reader, config))
                     {
-                        SkipSummaryLines(csv);
+                        TestHelpers.SkipSummaryLines(csv);
 
                         testItems.AddRange(csv.GetRecords<PlantDestruction>());
                     }

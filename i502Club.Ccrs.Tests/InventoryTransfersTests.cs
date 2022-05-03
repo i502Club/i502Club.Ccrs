@@ -17,18 +17,15 @@ namespace i502Club.Ccrs.Tests
         [TestMethod]
         public void CreateAndRead()
         {
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var fileNamePrefix = "inventorytransfer_";
 
-            User user = GetUser();
-
-            if (path == null)
+            if (_path == null)
             {
-                Assert.Fail("Invalid path");
+                Assert.Fail("Invalid _path");
                 return;
             }
 
-            RemoveCsvFiles(path);
+            TestHelpers.RemoveCsvFiles(_path);
 
             //create some items
             var items = new List<InventoryTransfer>();
@@ -40,21 +37,20 @@ namespace i502Club.Ccrs.Tests
             }
 
             //set up csv helper config
-            var config = GetConfig();
+            var config = TestHelpers.GetConfig();
 
             //create the CCRS csv file
-            using (var writer = new StreamWriter(path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
+            using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                CreateHeaderRows(user, typeof(InventoryTransfer).GetProperties().Length, items.Count, csv);
-
-                InitConverters(csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(InventoryTransfer).GetProperties().Length, items.Count, csv);
+                TestHelpers.InitConverters(csv);
 
                 csv.WriteRecords(items);
             }
 
             //get ccrs files
-            var files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
+            var files = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
             var testItems = new List<InventoryTransfer>();
 
@@ -65,7 +61,7 @@ namespace i502Club.Ccrs.Tests
                     using (var reader = new StreamReader(f))
                     using (var csv = new CsvReader(reader, config))
                     {
-                        SkipSummaryLines(csv);
+                        TestHelpers.SkipSummaryLines(csv);
 
                         testItems.AddRange(csv.GetRecords<InventoryTransfer>());
                     }

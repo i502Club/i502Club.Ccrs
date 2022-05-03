@@ -1,12 +1,13 @@
+using AutoFixture;
+using AutoFixture.AutoMoq;
 using CsvHelper;
+using i502Club.Ccrs.Interfaces;
 using i502Club.Ccrs.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace i502Club.Ccrs.Tests
 {
@@ -16,54 +17,40 @@ namespace i502Club.Ccrs.Tests
         [TestMethod]
         public void CreateAndRead()
         {
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var fileNamePrefix = "area_";
 
-            User user = GetUser();
-
-            if (path == null)
+            if (_path == null)
             {
-                Assert.Fail("Invalid path");
+                Assert.Fail("Invalid _path");
                 return;
             }
 
-            RemoveCsvFiles(path);
+            TestHelpers.RemoveCsvFiles(_path);
 
-            //create some areas
-            var areas = new List<Area>();
+            //create some items
+            var items = new List<Area>();
             for (int i = 0; i < 4; i++)
             {
+                Area area = GetArea(_user, i);
 
-                var area = new Area
-                {
-                    Name = "Area" + i,
-                    LicenseNumber = _licenseNumber,
-                    ExternalIdentifier = "ExternalIdentifier" + i,
-                    IsQuarantine = false,
-                    Operation = "INSERT",
-                    CreatedDate = DateTime.Parse("04/20/2022"),
-                    CreatedBy = user.FirstName + " " + user.LastName
-                };
-
-                areas.Add(area);
+                items.Add(area);
             }
 
             //set up csv helper config
-            var config = GetConfig();
+            var config = TestHelpers.GetConfig();
 
             //create the CCRS csv file
-            using (var writer = new StreamWriter(path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
+            using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                CreateHeaderRows(user, typeof(i502Club.Ccrs.Models.Area).GetProperties().Length, areas.Count, csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(Area).GetProperties().Length, items.Count, csv);
+                TestHelpers.InitConverters(csv);
 
-                InitConverters(csv);
-
-                csv.WriteRecords(areas);
+                csv.WriteRecords(items);
             }
 
             //get area ccrs files
-            var areaFiles = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
+            var areaFiles = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
             var testAreas = new List<Area>();
 
@@ -71,17 +58,29 @@ namespace i502Club.Ccrs.Tests
             {
                 foreach (var f in areaFiles)
                 {
-                    using (var reader = new StreamReader(f))
-                    using (var csv = new CsvReader(reader, config))
-                    {
-                        SkipSummaryLines(csv);
-
-                        testAreas.AddRange(csv.GetRecords<Area>());
-                    }
+                    ProcessFile(config, testAreas, f);
                 }
             }
 
-            Assert.AreEqual(areas.Count, testAreas.Count);
+            Assert.AreEqual(items.Count, testAreas.Count);
+        }
+
+        private static void ProcessFile(CsvHelper.Configuration.CsvConfiguration config, List<Area> testAreas, string f)
+        {
+            using (var reader = new StreamReader(f))
+            using (var csv = new CsvReader(reader, config))
+            {
+                TestHelpers.SkipSummaryLines(csv);
+
+                testAreas.AddRange(csv.GetRecords<Area>());
+            }
+        }
+
+        private Area GetArea(User user, int i)
+        {
+            var fixture = new Fixture().Customize(new AutoMoqCustomization());
+            var item = fixture.Create<Area>();
+            return item;
         }
     }
 
