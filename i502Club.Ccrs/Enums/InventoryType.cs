@@ -110,13 +110,13 @@
         public InventoryType(int value, string displayName) : base(value, displayName) {
             
             //Set Category prop
-            if (value < 4) { this.Category = InventoryCategory.PropagationMaterial; }
+            if (value < 3) { this.Category = InventoryCategory.PropagationMaterial; }
             else if (value < 11) { this.Category = InventoryCategory.HarvestedMaterial; }
             else if (value < 21) { this.Category = InventoryCategory.IntermediateProduct; }
             else { this.Category = InventoryCategory.EndProduct; }
 
             //Set Uom prop
-            if (value < 4) { this.Uom = Uom.Each; }
+            if (value < 3) { this.Uom = Uom.Each; }
             else if (value < 21) { this.Uom = Uom.Gram; }
             else { this.Uom = Uom.Each; }
         }
