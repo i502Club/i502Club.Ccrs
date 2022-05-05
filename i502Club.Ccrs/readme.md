@@ -52,14 +52,16 @@ from the package.
 This project will likely see breaking changes.  Please implement accordingly.
 
 There is a known issue in CCRS related to duplicate inventory type names 
-(waste and marijuana mixes) in categories.  This project contains an experimental superset 
-Enum for inventory types which attempts to address this but it is purely experimental and 
-real world application use may require refactoring once a standardized solutin has been 
+(waste and marijuana mixes) in categories.  This project contains an experimental  
+Enumeration Class for Product.InventoryType which attempts to address this but it 
+is experimental and use may require refactoring once a standardized solution has been 
 released to integrators. 
 
 There are seperate Enums representing the category specific inventory 
-types available which avoids duplicate Enum Key name collisions 
-that would otherwise occur if using a single Enum.
+types available which also avoids duplicate Enum Key name collisions 
+that would otherwise occur if using a single Enum. It creates difficulties 
+in standard db approaches but workarounds can be used with these Enums 
+and depending on your application requirements may be useful.
 
 ---
 
