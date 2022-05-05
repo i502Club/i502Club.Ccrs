@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace i502Club.Ccrs.Enums
+﻿namespace i502Club.Ccrs.Enums
 {
     public enum InventoryTypeHarvestMaterial
     {
@@ -10,7 +8,6 @@ namespace i502Club.Ccrs.Enums
         FlowerLot,
         OtherMaterialUnlotted,
         NonSolventbasedConcentrate,
-        [Description("Other Magusuc asdfas")]
         OtherMaterialLot,
         Waste,
         MarijuanaMix
