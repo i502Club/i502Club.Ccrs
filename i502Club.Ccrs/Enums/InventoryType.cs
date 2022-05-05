@@ -1,10 +1,11 @@
 ﻿namespace i502Club.Ccrs.Enums
 {
     /// <summary>
-    /// Experimental Superset Enumeration Class which include all InventoryCategory InventoryTypes.
-    /// Standardized enum key have been altered with InventoryCategory suffixes 
-    /// to allow for a single Enum. Category and Uom props eliminate the 
-    /// typical need for switch or if's using normal Enums.
+    /// Experimental Superset Enumeration Class which includes all 
+    /// InventoryCategory InventoryTypes. Standardized enum key have 
+    /// been altered with InventoryCategory suffixes to allow for 
+    /// a single Enum. Category and Uom props eliminate the typical 
+    /// need for switch or if's using normal Enums.
     /// </summary>
     public class InventoryType : Enumeration
     {
