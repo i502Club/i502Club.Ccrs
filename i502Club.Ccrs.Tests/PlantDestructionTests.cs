@@ -12,13 +12,12 @@ using System.Reflection;
 namespace i502Club.Ccrs.Tests
 {
     [TestClass]
-    public class StrainTests : TestBase
+    public class PlantDestructionTests : TestBase
     {
-
         [TestMethod]
         public void CreateAndRead()
         {
-            var fileNamePrefix = "strain_";
+            var fileNamePrefix = "plantdestruction_";
 
             if (_path == null)
             {
@@ -29,12 +28,12 @@ namespace i502Club.Ccrs.Tests
             TestHelpers.RemoveCsvFiles(_path);
 
             //create some items
-            var items = new List<Strain>();
+            var items = new List<PlantDestruction>();
             for (int i = 0; i < 4; i++)
             {
 
                 var fixture = new Fixture().Customize(new AutoMoqCustomization());
-                var item = fixture.Create<Strain>();
+                var item = fixture.Create<PlantDestruction>();
                 items.Add(item);
 
                 items.Add(item);
@@ -47,7 +46,7 @@ namespace i502Club.Ccrs.Tests
             using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                TestHelpers.CreateHeaderRows(_user, typeof(i502Club.Ccrs.Models.Area).GetProperties().Length, items.Count, csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(PlantDestruction).GetProperties().Length, items.Count, csv);
                 TestHelpers.InitConverters(csv);
 
                 csv.WriteRecords(items);
@@ -56,7 +55,7 @@ namespace i502Club.Ccrs.Tests
             //get ccrs files
             var files = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
-            var testItems = new List<Strain>();
+            var testItems = new List<PlantDestruction>();
 
             if (files.Any())
             {
@@ -67,7 +66,7 @@ namespace i502Club.Ccrs.Tests
                     {
                         TestHelpers.SkipSummaryLines(csv);
 
-                        testItems.AddRange(csv.GetRecords<Strain>());
+                        testItems.AddRange(csv.GetRecords<PlantDestruction>());
                     }
                 }
             }

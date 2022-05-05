@@ -1,24 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net45;net472</TargetFrameworks>
     <PackageReleaseNotes>ReleaseNotes.txt</PackageReleaseNotes>
-	<Description>DotNet library for WA CCRS models, interfaces and enums.</Description>
+	<PackageDescription>DotNet library for WA CCRS models, interfaces and enums.</PackageDescription>
     <Copyright>i502 Club</Copyright>
-    <PackageProjectUrl>https://github.com/i502Club/ccrs</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/i502Club/i502Club.Ccrs</PackageProjectUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-	<!--<PackageLicenseFile>License.txt</PackageLicenseFile>-->
-    <RepositoryUrl>https://github.com/i502Club/ccrs</RepositoryUrl>
+    <RepositoryUrl>https://github.com/i502Club/i502Club.Ccrs</RepositoryUrl>
     <PackageTags>cannabis;ccrs;i502</PackageTags>
     <Company>i502 Club</Company>
     <Authors>i502 Club</Authors>
-    <Owners>i502 Club</Owners>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>1.0.0</Version>
   </PropertyGroup>
-
   <ItemGroup>
 	<Content Include="License.txt">
 		<Pack>True</Pack>
@@ -33,5 +29,4 @@
 		<PackagePath>\</PackagePath>
 	</Content>
   </ItemGroup>
-
 </Project>

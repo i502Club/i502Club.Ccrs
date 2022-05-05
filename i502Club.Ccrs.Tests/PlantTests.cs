@@ -12,31 +12,26 @@ using System.Reflection;
 namespace i502Club.Ccrs.Tests
 {
     [TestClass]
-    public class StrainTests : TestBase
+    public class PlantTests : TestBase
     {
-
         [TestMethod]
         public void CreateAndRead()
         {
-            var fileNamePrefix = "strain_";
-
             if (_path == null)
             {
                 Assert.Fail("Invalid _path");
                 return;
             }
 
+            var fileNamePrefix = "plant_";
             TestHelpers.RemoveCsvFiles(_path);
 
-            //create some items
-            var items = new List<Strain>();
+            //create some plants
+            var items = new List<Plant>();
             for (int i = 0; i < 4; i++)
             {
-
                 var fixture = new Fixture().Customize(new AutoMoqCustomization());
-                var item = fixture.Create<Strain>();
-                items.Add(item);
-
+                var item = fixture.Create<Plant>();
                 items.Add(item);
             }
 
@@ -47,32 +42,32 @@ namespace i502Club.Ccrs.Tests
             using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                TestHelpers.CreateHeaderRows(_user, typeof(i502Club.Ccrs.Models.Area).GetProperties().Length, items.Count, csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(i502Club.Ccrs.Models.Plant).GetProperties().Length, items.Count, csv);
                 TestHelpers.InitConverters(csv);
 
                 csv.WriteRecords(items);
             }
 
-            //get ccrs files
-            var files = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
+            //get plant ccrs files
+            var plantFiles = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
-            var testItems = new List<Strain>();
+            var testplants = new List<Plant>();
 
-            if (files.Any())
+            if (plantFiles.Any())
             {
-                foreach (var f in files)
+                foreach (var f in plantFiles)
                 {
                     using (var reader = new StreamReader(f))
                     using (var csv = new CsvReader(reader, config))
                     {
                         TestHelpers.SkipSummaryLines(csv);
 
-                        testItems.AddRange(csv.GetRecords<Strain>());
+                        testplants.AddRange(csv.GetRecords<Plant>());
                     }
                 }
             }
 
-            Assert.AreEqual(items.Count, testItems.Count);
+            Assert.AreEqual(items.Count, testplants.Count);
         }
     }
 }

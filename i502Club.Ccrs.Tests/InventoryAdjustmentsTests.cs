@@ -7,47 +7,43 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace i502Club.Ccrs.Tests
 {
     [TestClass]
-    public class StrainTests : TestBase
+    public class InventoryAdjustmentsTests : TestBase
     {
-
         [TestMethod]
         public void CreateAndRead()
         {
-            var fileNamePrefix = "strain_";
+            var fileNamePrefix = "planttransfer_";
 
             if (_path == null)
             {
-                Assert.Fail("Invalid _path");
+                Assert.Fail("Invalid path");
                 return;
             }
 
             TestHelpers.RemoveCsvFiles(_path);
 
             //create some items
-            var items = new List<Strain>();
+            var items = new List<InventoryAdjustment>();
             for (int i = 0; i < 4; i++)
             {
-
                 var fixture = new Fixture().Customize(new AutoMoqCustomization());
-                var item = fixture.Create<Strain>();
-                items.Add(item);
-
+                var item = fixture.Create<InventoryAdjustment>();
                 items.Add(item);
             }
 
             //set up csv helper config
             var config = TestHelpers.GetConfig();
+            var propLength = typeof(InventoryAdjustment).GetProperties().Length;
 
             //create the CCRS csv file
             using (var writer = new StreamWriter(_path + @"/" + fileNamePrefix + _licenseNumber + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv"))
             using (var csv = new CsvWriter(writer, config))
             {
-                TestHelpers.CreateHeaderRows(_user, typeof(i502Club.Ccrs.Models.Area).GetProperties().Length, items.Count, csv);
+                TestHelpers.CreateHeaderRows(_user, typeof(InventoryAdjustment).GetProperties().Length, items.Count, csv);
                 TestHelpers.InitConverters(csv);
 
                 csv.WriteRecords(items);
@@ -56,7 +52,7 @@ namespace i502Club.Ccrs.Tests
             //get ccrs files
             var files = Directory.EnumerateFiles(_path, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".csv") && s.Contains(fileNamePrefix));
 
-            var testItems = new List<Strain>();
+            var testItems = new List<InventoryAdjustment>();
 
             if (files.Any())
             {
@@ -67,7 +63,7 @@ namespace i502Club.Ccrs.Tests
                     {
                         TestHelpers.SkipSummaryLines(csv);
 
-                        testItems.AddRange(csv.GetRecords<Strain>());
+                        testItems.AddRange(csv.GetRecords<InventoryAdjustment>());
                     }
                 }
             }
