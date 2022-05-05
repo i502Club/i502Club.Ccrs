@@ -65,7 +65,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'release_v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+        exclusions: '/bin/* /obj/* *.svg *.html *.js *.git* /*node_modules/* .editorconfig'
 
     - name: Upload Release Zip Asset
       id: upload-release-asset 
