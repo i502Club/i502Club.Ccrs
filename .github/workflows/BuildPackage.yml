@@ -60,11 +60,11 @@ jobs:
           draft: true
           prerelease: true
 
-    - name: Create Release Zip Archive 
+    - name: Create Source Zip Archive 
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'release_v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}.zip'
+        filename: 'source_v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}.zip'
         exclusions: '**/images **/bin/* **/obj/* *.svg *.html *.js *.git* /*node_modules/* .editorconfig'
 
     - name: Upload Release Zip Asset
