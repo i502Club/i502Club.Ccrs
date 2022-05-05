@@ -60,7 +60,14 @@ jobs:
           draft: true
           prerelease: true
 
-    - name: Upload Source Zip Release Asset
+    - name: Create Release Zip Archive 
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'release_v${{ steps.branchVersion.outputs.major }}.${{ steps.branchVersion.outputs.minor }}.${{ steps.branchVersion.outputs.patch }}.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+
+    - name: Upload Release Zip Asset
       uses: actions/github-script@v3
       with:
        github-token: ${{secrets.CI_TOKEN}}
