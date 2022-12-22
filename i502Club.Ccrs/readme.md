@@ -18,9 +18,8 @@ environment.  It is currently being developed and issues are expected to arise r
 fixes.
 
 ## Getting Started
-To get started you must make a reference to the library from your project by 
-adding this repository's github packages nuget feed as a source to your solution 
-or cloning the repo and compiling your own version.
+To get started you must clone the repo to a working directory and begin 
+compiling your own version.
 
 To access the package add https://nuget.pkg.github.com/i502Club/index.json as 
 a NuGet package source to Visual Studio or any other development tool.
@@ -48,8 +47,7 @@ custom converters which are useful for some of the common basic steps that are
 likely to arise.
 
 ### About the Install
-You can use the nuget package feed to make installing and upgrading easier but it's not 
-required.  You may also clone the repo or download the source zip available 
+You may also clone the repo or download the source zip available 
 on the release page.
 
 ### Development

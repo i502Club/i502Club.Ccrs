@@ -1,5 +1,8 @@
-﻿i502Club.Ccrs v1.0.0
+﻿i502Club.Ccrs v2.0.0
 Net Standard class library supporting WA State CCRS
+
+v2.0.0
+Intial v2 release
 
 v1.0.0
 Intial release

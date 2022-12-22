@@ -1,8 +1,12 @@
-﻿namespace i502Club.Ccrs.Enums
+﻿using System;
+
+namespace i502Club.Ccrs.Enums
 {
+    [Obsolete("Use InventoryType instead")]
     public enum InventoryTypePropagationMaterial
     {
-        Seed = 1,
-        Plant
+        Clones = 1,
+        Plant,
+        Seed
     }
 }

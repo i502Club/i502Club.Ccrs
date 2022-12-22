@@ -1,18 +1,25 @@
-﻿namespace i502Club.Ccrs.Enums
+﻿using System;
+
+namespace i502Club.Ccrs.Enums
 {
+    [Obsolete("Use InventoryType instead")]
     public enum InventoryTypeEndProduct
     {
-        Capsule = 1,
-        SolidEdible,
-        Tincture,
+        CannabisMixInfused = 1,
+        CannabisMixPackaged,
+        Capsule,
+        CO2Concentrate,
+        ConcentrateForInhalation,
+        EthanolConcentrate,
+        HydrocarbonConcentrate,
         LiquidEdible,
+        NonSolventBasedConcentrate,
+        SampleJar,
+        SolidEdible,
+        Suppository,
+        Tincture,
         Transdermal,
         TopicalOintment,
-        MarijuanaMixPackaged,
-        MarijuanaMixInfused,
-        Suppository,
-        UsableMarijuana,
-        SampleJar,
-        Waste
+        UsableCannabis
     }
 }

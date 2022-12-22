@@ -12,7 +12,6 @@ namespace i502Club.Ccrs.Models
         public PlantSource PlantSource { get; set; }
         public PlantState PlantState { get; set; }
         public GrowthStage GrowthStage { get; set; }
-        public int HarvestCycle { get; set; }
         public string MotherPlantExternalIdentifier { get; set; }
         public DateTime? HarvestDate { get; set; }
         public bool IsMotherPlant { get; set; }

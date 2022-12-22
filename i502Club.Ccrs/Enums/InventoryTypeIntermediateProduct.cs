@@ -1,19 +1,13 @@
-﻿using System.ComponentModel;
+﻿using System;
 
 namespace i502Club.Ccrs.Enums
 {
+    [Obsolete("Use InventoryType instead")]
     public enum InventoryTypeIntermediateProduct
     {
-        MarijuanaMix = 1,
-        ConcentrateforInhalation,
-        [Description("Non-Solvent based Concentrate")]
-        NonSolventbasedConcentrate,
-        HydrocarbonConcentrate,
-        CO2Concentrate, 
-        EthanolConcentrate,
-        FoodGradeSolventConcentrate,
-        InfusedCookingMedium,
+        CannabisMix = 1,
         CBD,
-        Waste
+        FoodGradeSolventConcentrate,
+        InfusedCookingMedium
     }
 }
