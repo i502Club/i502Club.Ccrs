@@ -1,8 +1,12 @@
-﻿i502Club.Ccrs v2.0.0
+﻿i502Club.Ccrs v2.0.1
 Net Standard class library supporting WA State CCRS
 
+v2.0.1
+* update readme
+* Fix inventory type tests
+
 v2.0.0
-Updated CCRS models for 2023
+* Updated CCRS models for 2023
 
 v1.0.0
-Intial release
+* Intial release
