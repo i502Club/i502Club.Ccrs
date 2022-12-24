@@ -8,25 +8,25 @@ namespace i502Club.Ccrs.Tests
     public class InventoryTypeTests : TestBase
     {
         [TestMethod]
-        public void CO2ConcentrateUsesGram()
+        public void InfusedCookingMediumUsesGram()
         {
             var p = new Product
             {
-                InventoryType = InventoryType.CO2Concentrate
+                InventoryType = InventoryType.InfusedCookingMedium
             };
 
             Assert.IsTrue(p.InventoryType.Uom == Uom.Gram);
         }
 
         [TestMethod]
-        public void CO2ConcentrateIsIntermediateProduct()
+        public void CO2ConcentrateIsEndProduct()
         {
             var p = new Product
             {
                 InventoryType = InventoryType.CO2Concentrate
             };
 
-            Assert.IsTrue(p.InventoryType.Category == InventoryCategory.IntermediateProduct);
+            Assert.IsTrue(p.InventoryType.Category == InventoryCategory.EndProduct);
         }
 
         [TestMethod]
