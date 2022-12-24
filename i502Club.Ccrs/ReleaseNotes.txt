@@ -2,7 +2,7 @@
 Net Standard class library supporting WA State CCRS
 
 v2.0.0
-Intial v2 release
+Updated CCRS models for 2023
 
 v1.0.0
 Intial release
