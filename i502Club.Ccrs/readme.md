@@ -21,15 +21,6 @@ fixes.
 To get started you must clone the repo to a working directory and begin 
 compiling your own version.
 
-To access the package add https://nuget.pkg.github.com/i502Club/index.json as 
-a NuGet package source to Visual Studio or any other development tool.
-
-![Nuget Feed Source Settings](images/screenshot_nuget_settings.png)
-
-Once you've added the nuget source you can install the package using the 
-nuget command found on the package version you're installing(usually latest). 
-
-
 For most applications it will be the case that you will also want a NuGet 
 package reference to CsvHelper.  CCRS is a csv file based system.
 
@@ -53,19 +44,14 @@ on the release page.
 ### Development
 This project will likely see breaking changes.  Please implement accordingly.
 
-There is a known issue related to duplicate inventory type names 
-(waste and marijuana mixes) in categories.  This project contains an experimental  
-Enumeration Class for Product.InventoryType which attempts to address this 
-Enum difficulty but it may be deprecated or require refactoring once a 
-standardized solution has been adopted. 
+There was a known issue in v1 related to duplicate inventory type names 
+(waste and marijuana mixes) in categories.  This project contains an 
+Enumeration Class for Product.InventoryType which attempted to address this 
+Enum difficulty. It was left in v2 but may be deprecated at any point which  
+would require refactoring for those using the enumeration class properties.
 
 There are also seperate InventoryType Enums representing the category 
-specific inventory types available which also avoids duplicate Enum 
-Key name collisions that would otherwise occur if using a single Enum. 
-It creates difficulties in standard db approaches but workarounds 
-can be used with these Enums and depending on your application 
-requirements may be useful. (ie. if you are work exclusively with 
-plants)
+specific inventory types available which have been deprecated and will be removed.
 
 ---
 
