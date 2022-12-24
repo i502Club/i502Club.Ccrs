@@ -16,18 +16,7 @@ environment.  It is currently being developed and issues are expected to arise r
 fixes.
 
 ## Getting Started
-To get started you must make a reference to the library from your project by 
-adding this repository's github packages nuget feed as a source to your solution 
-or cloning the repo and compiling your own version.
-
-To access the package add https://nuget.pkg.github.com/i502Club/index.json as 
-a NuGet package source to Visual Studio or any other development tool.
-
-![Nuget Feed Source Settings](i502Club.Ccrs/images/screenshot_nuget_settings.png)
-
-Once you've added the nuget source you can install the package using the 
-nuget command found on the package version you're installing(usually latest). 
-
+To get started you must clone the repo and use VS Community Edition or higher to begin  compiling your own version.
 
 For most applications it will be the case that you will also want a NuGet 
 package reference to CsvHelper.  CCRS is a csv file based system.
@@ -51,14 +40,10 @@ from the package.
 ### Development
 This project will likely see breaking changes.  Please implement accordingly.
 
-We expect to see some CCRS changes around duplicate inventory types 
-in categories.  The project contains an experimental superset Enum for 
-inventory types which attempts to address this but for now it 
-is purely experimental and real world application use should be avoided. 
+CCRS model updates have eliminated the need for an enumeration class and separate enums.  
 
-There are seperate Enums representing the category specific inventory 
-types available which avoids duplicate Enum Key name collisions 
-that would otherwise occur if using a single Enum.
+The enmeration class and the category specific enums supporting the initial CCRS models 
+are both cadidates for deprecation but have been left in place at this stage.  
 
 ---
 
