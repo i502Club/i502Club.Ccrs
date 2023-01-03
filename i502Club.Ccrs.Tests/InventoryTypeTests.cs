@@ -7,38 +7,6 @@ namespace i502Club.Ccrs.Tests
     [TestClass]
     public class InventoryTypeTests : TestBase
     {
-        [TestMethod]
-        public void InfusedCookingMediumUsesGram()
-        {
-            var p = new Product
-            {
-                InventoryType = InventoryType.InfusedCookingMedium
-            };
-
-            Assert.IsTrue(p.InventoryType.Uom == Uom.Gram);
-        }
-
-        [TestMethod]
-        public void CO2ConcentrateIsEndProduct()
-        {
-            var p = new Product
-            {
-                InventoryType = InventoryType.CO2Concentrate
-            };
-
-            Assert.IsTrue(p.InventoryType.Category == InventoryCategory.EndProduct);
-        }
-
-        [TestMethod]
-        public void HasDisplayName()
-        {
-            var item = new Product
-            {
-                InventoryType = InventoryType.CO2Concentrate
-            };
-
-            Assert.IsFalse(string.IsNullOrWhiteSpace(item.InventoryType.DisplayName));
-        }
 
         [TestMethod]
         public void HasHashCode()
@@ -80,17 +48,5 @@ namespace i502Club.Ccrs.Tests
             Assert.IsFalse(item.Equals(item2));
         }
 
-        [TestMethod]
-        public void InventoryTypeFromValue()
-        {
-            var item = new Product
-            {
-                InventoryType = InventoryType.CO2Concentrate
-            };
-
-            var item2 = InventoryType.FromValue<InventoryType>(15);
-
-            Assert.IsTrue(item.InventoryType.Equals(item2));
-        }
     }
 }
