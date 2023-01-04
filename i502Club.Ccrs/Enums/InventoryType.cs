@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace i502Club.Ccrs.Enums
 {
@@ -40,7 +39,7 @@ namespace i502Club.Ccrs.Enums
         HydrocarbonConcentrate,
         [Description("Liquid Edible")]
         LiquidEdible,
-        [EnumMember(Value = "Non-Solvent Based Concentrate")]
+        [Description("Non-Solvent Based Concentrate")]
         NonSolventBasedConcentrate,
         [Description("Sample Jar")]
         SampleJar,
